@@ -1,4 +1,7 @@
-exports.handler = async (event, context) => {
+import { getStore } from "@netlify/blobs";
+import type { Context } from "@netlify/functions";
+
+exports.handler = async (event, context: Context) => {
     const url = "https://icanhazdadjoke.com/";
     const store = getStore('jokes');
 
