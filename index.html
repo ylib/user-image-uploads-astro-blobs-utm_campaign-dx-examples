@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joke</title>
+    <script>
+        'use strict';
+
+        onload = ({ timeStamp: was }) => {
+            // const url = 'https://icanhazdadjoke.com/';
+            const url = 'functions/joke';
+            const _joke = document.body.appendChild(document.createElement('p'));
+
+            refresh(was);
+
+            
+            function display({joke}) {
+                console.log(joke);
+                _joke.textContent = joke;
+            }
+
+            function refresh(now) {
+                if (now - was > 23000) {
+                    [fetch(url, { headers: { Accept: 'application/json' } }), b => b.ok && b.json(), display].reduce((p, q) => p.then(q));
+                    was = now;
+                }
+
+                requestAnimationFrame(refresh);
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
