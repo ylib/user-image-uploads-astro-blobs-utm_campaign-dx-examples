@@ -7,6 +7,6 @@ export default async (request, context) => {
 };
 
 export const config = {
-  method: ['GET','POST'],
+  method: ['GET','PUT'],
   path: "/api/:gang/:item"
 };
