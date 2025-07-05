@@ -1,4 +1,5 @@
 import { Config, Context } from "@netlify/functions";
+import { getStore } from "@netlify/blobs";
 
 export default async (request, context) => {
   const { gang, item } = context.params;
