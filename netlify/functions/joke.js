@@ -1,4 +1,3 @@
-import { getStore } from "@netlify/blobs";
 import { Config, Context } from "@netlify/functions";
 
 export default async (request, context) => {
