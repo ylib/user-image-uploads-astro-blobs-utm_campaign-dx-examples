@@ -3,12 +3,15 @@ import { Config, Context } from "@netlify/functions";
 export default async (request, context) => {
   const { gang, item } = context.params;
   const {method} = request;
+  const store = getStore(gang);
 
   if (method === 'PUT') {
     const data = await request.json();
-    return new Response(JSON.stringify({method, data}));
+    await store.set(item, data);
+    return new Response(JSON.stringify({gang, item, data}));
   } else {
-    return new Response(JSON.stringify({gang, item}));
+    const data = await store.get(item);
+    return new Response(JSON.stringify({gang, item, data}));
   }
 };
 
