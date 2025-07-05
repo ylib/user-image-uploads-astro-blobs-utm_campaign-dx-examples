@@ -1,5 +1,5 @@
-import { Config, Context } from "@netlify/functions";
 import { getStore } from "@netlify/blobs";
+import { Config, Context } from "@netlify/functions";
 
 export default async (request, context) => {
   const { gang, item } = context.params;
@@ -8,7 +8,7 @@ export default async (request, context) => {
 
   if (method === 'PUT') {
     const data = await request.json();
-    await store.set(item, data);
+    await store.set(item, JSON.stringify(data));
     return new Response(JSON.stringify({gang, item, data}));
   } else {
     const data = await store.get(item);
