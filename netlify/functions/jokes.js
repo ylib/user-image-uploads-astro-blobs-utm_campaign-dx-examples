@@ -1,4 +1,4 @@
-export default async (req: Request, ctx: Context) => {
+export default async (req, ctx) => {
     const store = getStore('jokes');
     const url = 'https://icanhazdadjoke.com/';
 
