@@ -1,3 +1,5 @@
+import { getStore } from "@netlify/blobs";
+
 export default async (req, ctx) => {
     const store = getStore('jokes');
     const url = 'https://icanhazdadjoke.com/';
